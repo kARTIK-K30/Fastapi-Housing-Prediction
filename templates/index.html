@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EstateIQ | AI Property Valuation</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <nav class="navbar">
+            <div class="logo">
+                ESTATE<span>IQ.</span>
+            </div>
+
+            <div class="nav-label">
+                AI POWERED PROPERTY INTELLIGENCE
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <span class="hero-tag">SMART REAL ESTATE ANALYTICS</span>
+
+            <h1>
+                Discover the True<br>
+                Value of Your <span>Property.</span>
+            </h1>
+
+            <p>
+                Intelligent property valuation powered by machine learning.
+                Get accurate estimates using your property's key features.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+
+        <div class="form-card">
+
+            <div class="form-header">
+                <div>
+                    <span class="eyebrow">PROPERTY ANALYSIS</span>
+                    <h2>Property Details</h2>
+                    <p>Enter your property information to generate an estimated valuation.</p>
+                </div>
+
+                <div class="step-badge">
+                    STEP 01
+                </div>
+            </div>
+
+
+            <form action="/predict" method="post">
+
+                <!-- PROPERTY INFORMATION -->
+                <div class="form-section">
+
+                    <div class="section-heading">
+                        <div class="section-icon">01</div>
+
+                        <div>
+                            <h3>Basic Information</h3>
+                            <p>Tell us about your property's structure.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="area">Property Area</label>
+
+                            <div class="input-wrapper">
+                                <input
+                                    type="number"
+                                    id="area"
+                                    name="area"
+                                    placeholder="e.g. 2500"
+                                    min="1"
+                                    required>
+                                <span class="input-unit">SQ FT</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bedrooms">Bedrooms</label>
+
+                            <select id="bedrooms" name="bedrooms" required>
+                                <option value="" disabled selected>Select bedrooms</option>
+                                <option value="1">1 Bedroom</option>
+                                <option value="2">2 Bedrooms</option>
+                                <option value="3">3 Bedrooms</option>
+                                <option value="4">4 Bedrooms</option>
+                                <option value="5">5 Bedrooms</option>
+                                <option value="6">6+ Bedrooms</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bathrooms">Bathrooms</label>
+
+                            <select id="bathrooms" name="bathrooms" required>
+                                <option value="" disabled selected>Select bathrooms</option>
+                                <option value="1">1 Bathroom</option>
+                                <option value="2">2 Bathrooms</option>
+                                <option value="3">3 Bathrooms</option>
+                                <option value="4">4 Bathrooms</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="stories">Number of Stories</label>
+
+                            <select id="stories" name="stories" required>
+                                <option value="" disabled selected>Select stories</option>
+                                <option value="1">1 Story</option>
+                                <option value="2">2 Stories</option>
+                                <option value="3">3 Stories</option>
+                                <option value="4">4 Stories</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="parking">Parking Spaces</label>
+
+                            <select id="parking" name="parking" required>
+                                <option value="" disabled selected>Select parking</option>
+                                <option value="0">No Parking</option>
+                                <option value="1">1 Space</option>
+                                <option value="2">2 Spaces</option>
+                                <option value="3">3 Spaces</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="furnishingstatus">Furnishing Status</label>
+
+                            <select id="furnishingstatus" name="furnishingstatus" required>
+                                <option value="" disabled selected>Select furnishing</option>
+                                <option value="furnished">Furnished</option>
+                                <option value="semi-furnished">Semi-Furnished</option>
+                                <option value="unfurnished">Unfurnished</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- AMENITIES -->
+                <div class="form-section amenities-section">
+
+                    <div class="section-heading">
+                        <div class="section-icon">02</div>
+
+                        <div>
+                            <h3>Property Amenities</h3>
+                            <p>Select the facilities available in your property.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="amenities-grid">
+
+                        <div class="form-group">
+                            <label for="mainroad">Main Road Access</label>
+                            <select id="mainroad" name="mainroad" required>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="guestroom">Guest Room</label>
+                            <select id="guestroom" name="guestroom" required>
+                                <option value="yes">Available</option>
+                                <option value="no">Not Available</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="basement">Basement</label>
+                            <select id="basement" name="basement" required>
+                                <option value="yes">Available</option>
+                                <option value="no">Not Available</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hotwaterheating">Hot Water Heating</label>
+                            <select id="hotwaterheating" name="hotwaterheating" required>
+                                <option value="yes">Available</option>
+                                <option value="no">Not Available</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="airconditioning">Air Conditioning</label>
+                            <select id="airconditioning" name="airconditioning" required>
+                                <option value="yes">Available</option>
+                                <option value="no">Not Available</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prefarea">Preferred Area</label>
+                            <select id="prefarea" name="prefarea" required>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- SUBMIT -->
+                <div class="form-footer">
+
+                    <p>
+                        Your property information will be analyzed
+                        using our machine learning model.
+                    </p>
+
+                    <button type="submit">
+                        <span>Generate Property Valuation</span>
+                        <span class="arrow">→</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- PREDICTION RESULT -->
+            {% if prediction is not none %}
+
+            <div class="result-card">
+
+                <span class="result-label">YOUR ESTIMATED PROPERTY VALUE</span>
+
+                <h2>₹ {{ "{:,.2f}".format(prediction) }}</h2>
+
+                <p>AI-generated property price estimate</p>
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- ERROR -->
+            {% if error %}
+
+            <div class="error-message">
+                {{ error }}
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <footer>
+            <p>© 2026 EstateIQ. Intelligent Real Estate Valuation.</p>
+            <span>Powered by Machine Learning</span>
+        </footer>
+
+    </main>
+
+</body>
+</html>
